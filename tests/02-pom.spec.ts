@@ -5,7 +5,7 @@ import { generateUser } from '../utils/testData';
 import { LoginPage } from '../pages/LoginPage';
 
 
-test.describe('Sign up', () => {
+test.describe('Sign up', { tag: ['@signup', '@pom'] },() => {
   test('registers a new user and redirects to the home feed', async ({ page }) => {
     const user = generateUser();
 

@@ -1,7 +1,7 @@
 import { test, expect } from '@playwright/test';
 
 
-test.describe('Sign up', () => {
+test.describe('Sign up', { tag: '@signup'}, () => {
   test('registers a new user and redirects to the home feed', async ({ page }) => {
     const timestamp = Date.now();
     const username = `tester${timestamp}`;
@@ -23,7 +23,7 @@ test.describe('Sign up', () => {
   });
 });
 
-test.describe('Sign in', () => {
+test.describe('Sign in', { tag: '@signin'}, () => {
 
   let username: string;
   let email: string;
@@ -49,7 +49,7 @@ test.describe('Sign in', () => {
 
   });
 
-  test.only('sings in with valid credentials and shows username in the navbar', async ({ page }) => {
+  test('sings in with valid credentials and shows username in the navbar', async ({ page }) => {
     await page.goto('/login');
 
     await page.getByPlaceholder('Email').fill(email);
