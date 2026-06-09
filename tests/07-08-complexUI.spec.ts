@@ -86,7 +86,7 @@ test.describe('New Windows / Popups', () => {
 });
 
 test.describe('Nested frames and iFrames', () => {
-    test.only('Nested frames', async ({ page }) => {
+    test('Nested frames', async ({ page }) => {
         const nestedFrames = new NestedFrames(page);
 
         await nestedFrames.goto();

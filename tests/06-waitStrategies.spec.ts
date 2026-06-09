@@ -3,7 +3,7 @@ import { test, expect } from '@playwright/test';
 import { LoginPage } from '../pages/LoginPage';
 
 test.describe('', () => {
-    test.only('User cannot submit the sign-in form with uncomplete fields', async({ page }) => {
+    test('User cannot submit the sign-in form with uncomplete fields', async({ page }) => {
         const loginPage = new LoginPage(page);
 
         await loginPage.goto();
@@ -19,7 +19,7 @@ test.describe('', () => {
         await loginPage.assertSignInButtonState();
     });
 
-    test.only('User cannot sign in with invalid credentials', async({ page }) => {
+    test('User cannot sign in with invalid credentials', async({ page }) => {
         const loginPage = new LoginPage(page);
 
         await loginPage.goto();
