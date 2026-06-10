@@ -8,7 +8,7 @@ import {
   } from 'allure-js-commons';
 
 test.describe('Sign up', { tag: ['@signup', '@pom'] },() => {
-    test.only('registers a new user and redirects to the home feed', async ({ page }) => {
+    test('registers a new user and redirects to the home feed', async ({ page }) => {
       await epic('Authentication')
       await feature('Sign up feature')
       await story('Register a new user')
