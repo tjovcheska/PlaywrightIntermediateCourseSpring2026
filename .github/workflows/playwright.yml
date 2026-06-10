@@ -19,7 +19,7 @@ jobs:
       matrix:
         include:
           - project: conduit
-            browser: chormium
+            browser: chromium
             base_url: https://demo.realworld.show/
           - project: the-internet
             browser: chromium
