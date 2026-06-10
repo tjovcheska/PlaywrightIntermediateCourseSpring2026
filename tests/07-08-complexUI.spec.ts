@@ -60,8 +60,6 @@ test.describe('File upload and file download', () => {
             downloadPage.clickFirstFileLink()
         ]);
 
-        console.log(download)
-
         await downloadPage.asertFileSaved(download);
         
     });

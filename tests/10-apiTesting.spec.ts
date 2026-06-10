@@ -31,14 +31,12 @@ test.describe('Article lifecycle', () => {
         const api = new APIClient(request);
         const user = generateUser();
         const createdUser = await api.register(user.username, user.email, user.password)
-        console.log(createdUser)
     });
 
     test.skip('Create an article', async ({ request }) => {
         const api = new APIClient(request);
         const user = generateUser();
         const createdUser = await api.register(user.username, user.email, user.password)
-        console.log(createdUser)
         const data = {
             title: `Demo ${Date.now()}`,
             description: `Desc ${Date.now()}`,
@@ -47,14 +45,12 @@ test.describe('Article lifecycle', () => {
 
         };
         const createdArticle = await api.createArticle(data);
-        console.log(createdArticle)
     });
 
     test('Read an article', async ({ request }) => {
         const api = new APIClient(request);
         api.setToken(authToken);
         const article = await api.getArticle(articleSlug);
-        console.log(article)
 
         expect(article.slug).toBe(articleSlug);
         expect(article.author.username).toBe(username)

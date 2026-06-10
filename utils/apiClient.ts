@@ -70,7 +70,6 @@ export class APIClient {
         body: string,
         tagList: string[]
     }): Promise<ArticlePayload> {
-        console.log(data)
         const response = await this.request.post(`${BASE_URL}/articles`, {
             headers: this.authHeader(),
             data: {
