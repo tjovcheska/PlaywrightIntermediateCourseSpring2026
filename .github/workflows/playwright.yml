@@ -47,6 +47,10 @@ jobs:
 
     - name: Install Playwright Browsers (cache miss)
       if: steps.playwright-cache.outputs.cache-hit != 'true'
+      run: npx playwright install --with-deps ${{ matrix.browser }}
+    
+    - name: Install Playwright Browsers (cache hit)
+      if: steps.playwright-cache.outputs.cache-hit == 'true'
       run: npx playwright install-deps ${{ matrix.browser }}
 
     - name: Run Playwright tests
