@@ -6,13 +6,15 @@ export class LoginPage extends BasePage{
     readonly emailInput: Locator;
     readonly passwordInput: Locator;
     readonly signInButton: Locator;
+    readonly errorMessages: Locator;
 
     constructor(page: Page) {
         super(page);
-        
+
         this.emailInput = page.getByPlaceholder('Email');
         this.passwordInput = page.getByPlaceholder('Password');
         this.signInButton = page.getByRole('button', { name: 'Sign in'});
+        this.errorMessages = page.locator('ul.error-messages');
     }
 
     async goto() {
@@ -43,6 +45,14 @@ export class LoginPage extends BasePage{
         } else {
             await expect(this.signInButton).toBeEnabled();
         }
+    }
+
+    async assertOnLoginPage() {
+        await expect(this.page).toHaveURL('/login');
+    }
+
+    async assertErrorMessage(text: string) {
+        await expect(this.errorMessages).toContainText(text);
     }
 
     async clearPasswordInputField() {

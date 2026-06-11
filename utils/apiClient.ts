@@ -73,13 +73,7 @@ export class APIClient {
         const response = await this.request.post(`${BASE_URL}/articles`, {
             headers: this.authHeader(),
             data: {
-                article: {
-                    title: `Demo ${Date.now()}`,
-                    description: `Desc ${Date.now()}`,
-                    body: `Body ${Date.now()}`,
-                    tagList: ['playwright']
-        
-                }
+                article: data
             }
         });
 
@@ -98,6 +92,13 @@ export class APIClient {
         if (!response.ok()) throw new Error(`createArticle failed ${response.status()}: ${JSON.stringify(body)}`)
 
         return body.article as ArticlePayload
+    }
+
+    async followUser(username: string): Promise<void> {
+        const response = await this.request.post(`${BASE_URL}/profiles/${username}/follow`, {
+            headers: this.authHeader()
+        });
+        if (!response.ok()) throw new Error(`followUser failed ${response.status()}`)
     }
 
     async deleteArticle(slug: string): Promise<void> {
